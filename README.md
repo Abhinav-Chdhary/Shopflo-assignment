@@ -36,3 +36,10 @@ Must have Node.js installed
 - Store analysis of a post when it is created
   (there would be a memory trade-off for this)
 - Use load-balancing
+
+## Technologies used
+
+- React
+- Bootstrap 5 (css library)
+- express js
+- Mongo DB
