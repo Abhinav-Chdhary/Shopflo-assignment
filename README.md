@@ -23,3 +23,16 @@ Must have Node.js installed
   - uniqueid field is non empty when analyzing
   - unique identification is a number not used with a post before
   - content is text
+
+## Scalability modifications done:
+
+- Overriden default primary key of mongoDb to use 'uniqueId',
+  making 'analysis calls faster'
+- using a algorithm of linear time complexity for analysis calls
+
+## Scalibility potential changes:
+
+- Use redis to cache analysis calls
+- Store analysis of a post when it is created
+  (there would be a memory trade-off for this)
+- Use load-balancing
