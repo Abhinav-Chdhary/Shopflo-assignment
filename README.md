@@ -15,3 +15,10 @@ Must have Node.js installed
 - cd \*/shopflow-assignment/backend
 - npm install
 - npm devstart
+
+## Assumptions
+
+- user input is valid
+  - both fields are non empty
+  - unique identification is a number not used with a post before
+  - content is text
