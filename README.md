@@ -1,8 +1,17 @@
-# React + Vite
+# Shopflo assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Set-up and run
 
-Currently, two official plugins are available:
+Must have Node.js installed
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+
+- cd \*/shopflow-assignment
+- npm install
+- npm run dev
+
+### Backend
+
+- cd \*/shopflow-assignment/backend
+- npm install
+- npm devstart
