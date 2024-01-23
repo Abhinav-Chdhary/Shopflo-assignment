@@ -12,31 +12,48 @@ export default function App() {
   };
 
   const handlePost = async () => {
-    const response = await fetch("http://localhost:5000/api/v1/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        uniqueid: postContent.uniqueid,
-        textContent: postContent.textContent,
-      }),
-    });
-    const json = await response.json();
-    if (json.success) alert("Post Created");
+    try {
+      const response = await fetch("http://localhost:5000/api/v1/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uniqueid: postContent.uniqueid,
+          textContent: postContent.textContent,
+        }),
+      });
+      if (response.status === 429) {
+        alert("Only 5 requests every 10 minutes! Try later");
+        return;
+      }
+      const json = await response.json();
+      if (json.success) alert("Post Created");
+    } catch (error) {
+      console.error("Error occured! try again later");
+    }
   };
 
   const handleAnalyze = async () => {
-    const response = await fetch(
-      `http://localhost:5000/api/v1/posts/${postContent.uniqueid}/analysis`,
-      {
-        method: "GET",
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/v1/posts/${postContent.uniqueid}/analysis`,
+        {
+          method: "GET",
+        }
+      );
+      if (response.status === 429) {
+        alert("Only 5 requests every 10 minutes! Try later");
+        return;
+      } else {
+        const json = await response.json();
+        alert(
+          `Word Count: ${json.wordCount}, Average Word Length: ${json.averageWordLength}`
+        );
       }
-    );
-    const json = await response.json();
-    alert(
-      `Word Count: ${json.wordCount}, Average Word Length: ${json.averageWordLength}`
-    );
+    } catch (error) {
+      console.error("Error occured! try again later in Analyzing");
+    }
   };
 
   return (

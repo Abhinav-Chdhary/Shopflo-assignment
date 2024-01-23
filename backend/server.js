@@ -1,14 +1,15 @@
 const express = require("express");
 const app = express();
+const rateLimit = require("express-rate-limit");
 
 //to allow requests from localhost:5173
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
-  res.header(
+  res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Include the allowed methods
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   next();
 });
 
@@ -24,6 +25,19 @@ mongoDB()
 
 //middleware for using json data format
 app.use(express.json());
+
+//rate limiter
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, //10 min
+  max: 5, //limit ip to 5 requests per windowMs
+  handler: (req, res) => {
+    res.status(429).json({
+      success: false,
+    });
+  },
+});
+
+app.use(limiter);
 
 //handle Post creation
 app.use("/api", require("./Routes/createPost"));
