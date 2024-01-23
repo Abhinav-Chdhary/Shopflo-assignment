@@ -30,6 +30,7 @@ export default function App() {
       const json = await response.json();
       if (json.success) alert("Post Created");
     } catch (error) {
+      alert("Enter a different id or try again later");
       console.error("Error occured! try again later");
     }
   };
