@@ -15,7 +15,7 @@ function countWordsAndAverageLength(str) {
 router.get("/v1/posts/:id/analysis", async (req, res) => {
   try {
     const uid = req.params.id;
-    const post = await Post.findOne({ uniqueid: uid });
+    const post = await Post.findOne({ _id: uid });
 
     if (!post) {
       return res

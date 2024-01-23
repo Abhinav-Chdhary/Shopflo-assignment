@@ -5,7 +5,7 @@ const Post = require("../Models/Post");
 router.post("/v1/posts", async (req, res) => {
   try {
     await Post.create({
-      uniqueid: req.body.uniqueid,
+      _id: req.body.uniqueid,
       textContent: req.body.textContent,
     });
     res.json({ success: true });
