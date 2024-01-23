@@ -5,7 +5,6 @@ const PostSchema = new Schema({
   _id: {
     type: Number,
     required: true,
-    unique: true,
   },
   textContent: {
     type: String,
