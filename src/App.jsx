@@ -11,9 +11,19 @@ export default function App() {
     });
   };
 
-  const handlePost = () => {
-    console.log("post", postContent);
-    // You can perform additional actions with the postContent state
+  const handlePost = async () => {
+    const response = await fetch("http://localhost:5000/api/v1/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        uniqueid: postContent.uniqueid,
+        textContent: postContent.textContent,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
   };
 
   const handleAnalyze = () => {
@@ -45,7 +55,7 @@ export default function App() {
             id="post-content"
             placeholder="Enter your post here..."
             value={postContent.textContent}
-            onChange={(e) => handleInputChange("textcontent", e.target.value)}
+            onChange={(e) => handleInputChange("textContent", e.target.value)}
           ></textarea>
         </div>
         <button
