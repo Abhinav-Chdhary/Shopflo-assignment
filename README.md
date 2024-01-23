@@ -19,6 +19,7 @@ Must have Node.js installed
 ## Assumptions
 
 - user input is valid
-  - both fields are non empty
+  - both fields are non empty when creating a post
+  - uniqueid field is non empty when analyzing
   - unique identification is a number not used with a post before
   - content is text
