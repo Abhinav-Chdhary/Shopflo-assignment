@@ -23,12 +23,20 @@ export default function App() {
       }),
     });
     const json = await response.json();
-    console.log(json);
+    if (json.success) alert("Post Created");
   };
 
-  const handleAnalyze = () => {
-    console.log("analyze", postContent.uniqueid);
-    // You can perform additional actions with the postContent state
+  const handleAnalyze = async () => {
+    const response = await fetch(
+      `http://localhost:5000/api/v1/posts/${postContent.uniqueid}/analysis`,
+      {
+        method: "GET",
+      }
+    );
+    const json = await response.json();
+    alert(
+      `Word Count: ${json.wordCount}, Average Word Length: ${json.averageWordLength}`
+    );
   };
 
   return (
