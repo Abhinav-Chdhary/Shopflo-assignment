@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function App() {
-  const initialPostContent = { uniqueid: "", textcontent: "" };
+  const initialPostContent = { uniqueid: "", textContent: "" };
   const [postContent, setPostContent] = useState(initialPostContent);
 
   const handleInputChange = (field, value) => {
@@ -44,7 +44,7 @@ export default function App() {
             className="form-control"
             id="post-content"
             placeholder="Enter your post here..."
-            value={postContent.textcontent}
+            value={postContent.textContent}
             onChange={(e) => handleInputChange("textcontent", e.target.value)}
           ></textarea>
         </div>
