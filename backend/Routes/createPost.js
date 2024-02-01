@@ -6,7 +6,7 @@ router.post("/v1/posts", async (req, res) => {
   console.log(req.body.uniqueid);
   try {
     await Post.create({
-      _id: req.body.uniqueid,
+      uniqueid: req.body.uniqueid,
       textContent: req.body.textContent,
     });
     res.json({ success: true });
