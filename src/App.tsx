@@ -4,7 +4,7 @@ export default function App() {
   const initialPostContent = { uniqueid: "", textContent: "" };
   const [postContent, setPostContent] = useState(initialPostContent);
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field:string, value: string) => {
     setPostContent({
       ...postContent,
       [field]: value,
