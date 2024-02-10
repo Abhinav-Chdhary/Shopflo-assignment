@@ -1,8 +1,9 @@
-const express = require("express");
+import express, { Request, Response } from "express";
+
 const router = express.Router();
 const Post = require("../Models/Post");
 
-function countWordsAndAverageLength(str) {
+function countWordsAndAverageLength(str: string) {
   const words = str.match(/\b\w+\b/g) || [];
   const wordCount = words.length;
   const charCount = words.reduce((acc, word) => acc + word.length, 0);
@@ -12,7 +13,7 @@ function countWordsAndAverageLength(str) {
   return { wordCount, averageWordLength };
 }
 
-router.get("/v1/posts/:id/analysis", async (req, res) => {
+router.get("/v1/posts/:id/analysis", async (req: Request, res: Response) => {
   try {
     const uid = req.params.id;
     const post = await Post.findOne({ _id: uid });
