@@ -25,13 +25,10 @@ Must have Node.js installed
   - content is text
 
 ## Scalability modifications done:
-
-- Overriden default primary key of mongoDb to use 'uniqueId',
-  making 'analysis calls faster'
 - using a algorithm of linear time complexity for analysis calls
 
 ## Scalibility potential changes:
-
+- override default document id
 - Use redis to cache analysis calls
 - Store analysis of a post when it is created
   (there would be a memory trade-off for this)
